@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <link rel="icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/chatbox.css">
+</head>
+<body>
+    <div class="contact-us">
+        <div class="header">
+            <h1>My ChatBox</h1>
+        </div>
+        <form method="post" action="register.php">
+          <label >Name</label>
+          <input  name="customerName" required="" type="text" />
+          <label >Email</label>
+          <input name="customerEmail" required="" type="email" />
+          <label for="customerPhone">To</label>
+            <div class="input-field">
+                <i class="fa fa-user-md"></i>
+                <select name="" id="" required>
+                    <option value="#">Select</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="pharmacy">Pharmacy</option>
+                </select>
+            </div>
+
+          
+          <!--<label for="orderNumber">ORDER NUMBER</label>
+          <input id="orderNumber" name="orderNumber" type="text" />
+          <label for="customerNote">YOUR MESSAGE <em>&#x2a;</em></label>-->
+          <textarea id="customerNote" name="customerNote" required="" rows="4"></textarea>
+          <h3>
+            Please provide all the information about your issue you can.
+          </h3>
+          <button id="customerOrder">SUBMIT</button>
+        </form>
+      </div>
+    
+</body>
+</html>
