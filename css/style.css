@@ -425,10 +425,8 @@ h2:after{
 
 @media screen and (max-width:880px){
     .contact-box{
-        grid-template-columns: 1fr;
+        display: block;
+        width: 100%;
     }
-
-    .left{
-        height: 200px;
-    }
+    
 }
