@@ -101,52 +101,7 @@ if (!isset($_SESSION['email'])) {
             <?php
             }
             ?>
-            <!--<div class="main-skills">
-                <div class="card">
-                    <i class="fa fa-user-o"></i>
-                    <h3>Patient</h3>
-                    <p>check patient section for records</p>
-                    <button>View</button>
-                </div>
             
-
-            
-                <div class="card">
-                    <i class="fa fa-user-o"></i>
-                    <h3>Prescription</h3>
-                    <p>Administer the right dosage of drug</p>
-                    <button>Prescribe Now</button>
-                </div>
-           
-
-                <div class="card">
-                    <i class="fa fa-user-o"></i>
-                    <h3>Complaint</h3>
-                    <p>View Complaints from patients</p>
-                    <button>View</button>
-                </div>
-            </div>-->
-
-            <!--<section class="main-course">
-                <h1>My courses</h1>
-                <div class="course-box">
-                    <ul>
-                        <li>In Progress</li>
-                        <li>Explore</li>
-                        <li>Incoming</li>
-                        <li>Finished</li>
-                    </ul>
-
-                    <div class="course">
-                        <div class="box">
-                            <h3>HTML</h3>
-                            <p>86% -progess</p>
-                            <button>continue</button>
-                            <i class="fab fab-html5 html"></i>
-                        </div>
-                    </div>
-                </div>
-            </section>-->
         </section>
     </div>
 </body>
