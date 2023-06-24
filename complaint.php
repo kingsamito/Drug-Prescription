@@ -41,7 +41,7 @@ if (!isset($_SESSION['role'])) {
                     <i class="fa fa-book"></i>
                     <span class="nav-item">Complain</span>
                 </a></li>
-                <li><a href="#" class="logout">
+                <li><a href="logout.php" class="logout">
                     <i class="fa fa-sign-out"></i>
                     <span class="nav-item">Logout</span>
                 </a></li>

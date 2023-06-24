@@ -42,7 +42,7 @@ if (!isset($_SESSION['role']))
                         <i class="fa fa-book"></i>
                         <span class="nav-item">Complain</span>
                     </a></li>
-                <li><a href="#" class="logout">
+                <li><a href="logout.php" class="logout">
                         <i class="fa fa-sign-out"></i>
                         <span class="nav-item">Logout</span>
                     </a></li>
@@ -56,7 +56,7 @@ if (!isset($_SESSION['role']))
                 <i class="fa fa-user"></i>
             </div>
 
-        <!-- please i need to put a condition here so only doctor can prescribe -->
+            <!-- please i need to put a condition here so only doctor can prescribe -->
             <div class="prescribe">
                 <button onclick="openPopup()"><a href="newprescription.php">New Prescription</a></button>
             </div>
@@ -112,35 +112,35 @@ if (!isset($_SESSION['role']))
                 $days = $row['Days'];
             ?>
 
-            <div class="tale-box">
-                <div class="table-row">
-                    <div class="table-cell">
-                        <p><?php echo $id ?></p>
-                    </div>
+                <div class="tale-box">
+                    <div class="table-row">
+                        <div class="table-cell">
+                            <p><?php echo $id ?></p>
+                        </div>
 
-                    <div class="table-cell">
-                        <p><?php echo $patientname ?></p>
-                    </div>
+                        <div class="table-cell">
+                            <p><?php echo $patientname ?></p>
+                        </div>
 
-                    <div class="table-cell">
-                        <p><?php echo $patientemail ?></p>
-                    </div>
-                    <div class="table-cell">
-                        <p><?php echo $drugname ?></p>
-                    </div>
-                    <div class="table-cell">
-                        <p><?php echo $dosage ?></p>
-                    </div>
-                    <div class="table-cell">
-                        <p><?php echo $takewhen ?></p>
-                    </div>
+                        <div class="table-cell">
+                            <p><?php echo $patientemail ?></p>
+                        </div>
+                        <div class="table-cell">
+                            <p><?php echo $drugname ?></p>
+                        </div>
+                        <div class="table-cell">
+                            <p><?php echo $dosage ?></p>
+                        </div>
+                        <div class="table-cell">
+                            <p><?php echo $takewhen ?></p>
+                        </div>
 
-                    <div class="table-cell last-cell">
-                        <p><?php echo $days ?></p>
-                    </div>
+                        <div class="table-cell last-cell">
+                            <p><?php echo $days ?></p>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
 
             <?php
             }
