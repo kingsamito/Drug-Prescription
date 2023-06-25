@@ -57,9 +57,14 @@ if (!isset($_SESSION['role']))
             </div>
 
             <!-- please i need to put a condition here so only doctor can prescribe -->
-            <div class="prescribe">
+            <?php
+            if($_SESSION['role'] === "Doctor"){
+                echo '<div class="prescribe">
                 <button onclick="openPopup()"><a href="newprescription.php">New Prescription</a></button>
-            </div>
+            </div>';
+            }
+            ?>
+            
             <!--Table for patient-->
 
             <div class="tale-box">
