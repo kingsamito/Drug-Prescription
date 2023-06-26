@@ -67,7 +67,7 @@ if (!isset($_SESSION['role']))
             
             <!--Table for patient-->
 
-            <div class="tale-box">
+            <div class="table-box">
                 <div class="table-row table-head">
                     <div class="table-cell">
                         <p>ID</p>
@@ -154,7 +154,7 @@ if (!isset($_SESSION['role']))
     </div>
 
 
-
+    
 
     <!--<script>
         let popup = document.getElementById("popup");

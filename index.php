@@ -16,8 +16,8 @@
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times-circle" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="index.php" class="a">HOME<i class="fa fa-home"></i></a></li>
-                    <li><a href="signin.php" class="a">LOG IN<i class="fa fa-sign-in"></i></a></li>
+                    <li><a href="index.php" class="a">HOME</a></li>
+                    <li><a href="signin.php" class="a">LOG IN</a></li>
                     <li><a href="contactpg.html" class="a">CONTACT US</a></li>
                 </ul>
             </div>
@@ -27,9 +27,14 @@
         <div class="text-box">
             <h1>DRUG PRESCRIPTION SYSTEM</h1>
             <p>Health is the greatest possession. Contentment is the greatest treasure. Confidence is the greatest friend.</p>
-            <a href="" class="hero-btn">Visit Us TO Know More</a>
+            <a href="" class="hero-btn">Health is Wealth</a>
         </div>
 
+
+        <div class="chatbox">
+            <!--<i class="fa fa-comments"></i>-->
+            <a href="#"><img src="img/chat.png" alt="chatbox"></a>
+        </div>
     </section>
 
     

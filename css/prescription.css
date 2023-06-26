@@ -155,19 +155,25 @@ a:hover{
     .main-skills .card{
         width: 100%;
     }
+    nav{
+        display: none;
+    }
+    .table-cell{
+        width: 0.5%;
+    }
 }
 
 
 /*Patient Table*/
 
 .table-box{
-    margin: 50px auto;
+    
 }
 
 .table-row{
     display: table;
-    width: 80%;
-    margin: 20px auto;
+    width: 90%;
+    margin: 10px auto;
     font-family: sans-serif;
     background: transparent;
     padding: 10px 0;
@@ -178,9 +184,9 @@ a:hover{
 
 .table-cell{
     display: table-cell;
-    width: 20%;
+    width: 5%;
     text-align: center;
-    padding: 4px 0;
+    padding: 2px 0;
     border-right: 1px solid #d6d4d4;
     vertical-align: middle;
 }
@@ -209,7 +215,7 @@ a:hover{
 /* prescribe button */
 
 .prescribe{
-    padding-left: 79%;
+    margin: auto 0;
 }
 .prescribe a{
     background: orange;
@@ -218,6 +224,3 @@ a:hover{
 .popup{
     border: 1px solid black;
 }
-
-  
-  
