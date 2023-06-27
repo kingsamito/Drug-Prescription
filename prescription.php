@@ -17,6 +17,12 @@ if (!isset($_SESSION['role']))
     <link rel="stylesheet" href="css/prescription.css">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Prescription</title>
+    <!-- <style>
+        th,td {
+            border:1px solid black;
+            text-align:center;
+        }
+    </style> -->
 </head>
 
 <body>
@@ -58,15 +64,26 @@ if (!isset($_SESSION['role']))
 
             <!-- please i need to put a condition here so only doctor can prescribe -->
             <?php
-            if($_SESSION['role'] === "Doctor"){
+            if ($_SESSION['role'] === "Doctor") {
                 echo '<div class="prescribe">
                 <button onclick="openPopup()"><a href="newprescription.php">New Prescription</a></button>
             </div>';
             }
             ?>
-            
-            <!--Table for patient-->
 
+            <!--Table for patient-->
+            <!-- <table width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Patient Name</th>
+        <th>Patient Email</th>
+        <th>Drug Name</th>
+        <th>Dosage</th>
+        <th>Taken When</th>
+        <th>Days</th>
+    </tr>
+    
+ -->
             <div class="table-box">
                 <div class="table-row table-head">
                     <div class="table-cell">
@@ -93,8 +110,11 @@ if (!isset($_SESSION['role']))
                         <p>Taken When</p>
                     </div>
 
-                    <div class="table-cell last-cell">
+                    <div class="table-cell">
                         <p>Days</p>
+                    </div>
+                    <div class="table-cell last-cell">
+                        <p>Action</p>
                     </div>
 
 
@@ -115,8 +135,18 @@ if (!isset($_SESSION['role']))
                 $dosage = $row['Dosage'];
                 $takewhen = $row['TakeWhen'];
                 $days = $row['Days'];
+                $alerted = $row['Alerted']
             ?>
-
+                <!-- <tr>
+        <td><?php echo $id ?></td>
+        <td><?php echo $patientname ?></td>
+        <td><?php echo $patientemail ?></td>
+        <td><?php echo $drugname ?></td>
+        <td><?php echo $dosage ?></td>
+        <td><?php echo $takewhen ?></td>
+        <td><?php echo $days ?></td>
+    </tr>
+</table> -->
                 <div class="tale-box">
                     <div class="table-row">
                         <div class="table-cell">
@@ -140,8 +170,18 @@ if (!isset($_SESSION['role']))
                             <p><?php echo $takewhen ?></p>
                         </div>
 
-                        <div class="table-cell last-cell">
+                        <div class="table-cell">
                             <p><?php echo $days ?></p>
+                        </div>
+                        <div class="table-cell last-cell">
+                            <?php
+                            if($alerted == '') {
+                                echo '<p><a href="alert.php?email='.$patientemail.'&id='.$id.'">Alert</a></p>';
+                            }else {
+                               echo'<p>Alert</p>';
+                            }
+                            ?>
+                            
                         </div>
 
                     </div>
@@ -154,7 +194,7 @@ if (!isset($_SESSION['role']))
     </div>
 
 
-    
+
 
     <!--<script>
         let popup = document.getElementById("popup");
