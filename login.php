@@ -21,6 +21,6 @@ if(mysqli_num_rows($result)){
 		alert("No username found !")
 	</script>
 	<?php
-	header("location: index.php?message=$message");
+	header("location: signin.php");
 	}
 ?>
