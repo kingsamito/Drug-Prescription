@@ -170,19 +170,32 @@ if (!isset($_SESSION['role']))
                             <p><?php echo $takewhen ?></p>
                         </div>
 
-                        <div class="table-cell">
+                        <?php
+                        if($_SESSION['role'] === 'Doctor'){
+                            ?>
+                            <div class="table-cell last-cell">
+                            <p><?php echo $days ?></p>
+                            </div>
+                        <?php
+                        }else {
+                            ?>
+                            <div class="table-cell">
                             <p><?php echo $days ?></p>
                         </div>
                         <div class="table-cell last-cell">
                             <?php
                             if($alerted == '') {
-                                echo '<p><a href="alert.php?email='.$patientemail.'&id='.$id.'">Alert</a></p>';
+                                echo '<button style="border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="alert.php?email='.$patientemail.'&id='.$id.'">Alert</a></button>';
                             }else {
                                echo'<p>Alert</p>';
                             }
                             ?>
                             
                         </div>
+                        <?php
+                        }
+                        ?>
+                        
 
                     </div>
                 </div>

@@ -220,6 +220,7 @@ a:hover{
 .prescribe a{
     background: orange;
     color: white;
+    width: auto;
 }
 .popup{
     border: 1px solid black;

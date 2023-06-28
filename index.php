@@ -33,7 +33,7 @@
 
         <div class="chatbox">
             <!--<i class="fa fa-comments"></i>-->
-            <a href="#"><img src="img/chat.png" alt="chatbox"></a>
+            <a href="./chatbox/index.php"><img src="img/chat.png" alt="chatbox"></a>
         </div>
     </section>
 
