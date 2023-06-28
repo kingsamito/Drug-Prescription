@@ -16,7 +16,11 @@ if(mysqli_num_rows($result)){
 	$_SESSION['email'] = $res['Email'];
 	header("Location: dashboard.php");
 }else{
-	$message = "No username found !";
+	?>
+	<script>
+		alert("No username found !")
+	</script>
+	<?php
 	header("location: index.php?message=$message");
 	}
 ?>
