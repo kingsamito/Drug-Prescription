@@ -72,7 +72,8 @@ if (!isset($_SESSION['role']))
             ?>
 
             <!--Table for patient-->
-            <!-- <table width="100%">
+            <div style="overflow-x:auto;">
+            <table>
     <tr>
         <th>ID</th>
         <th>Patient Name</th>
@@ -81,10 +82,15 @@ if (!isset($_SESSION['role']))
         <th>Dosage</th>
         <th>Taken When</th>
         <th>Days</th>
+        <?php
+        if($_SESSION['role'] !== 'Doctor') {
+            echo '<th>Action</th>';
+        }
+        ?>
     </tr>
     
- -->
-            <div class="table-box">
+
+            <!-- <div class="table-box">
                 <div class="table-row table-head">
                     <div class="table-cell">
                         <p>ID</p>
@@ -120,7 +126,7 @@ if (!isset($_SESSION['role']))
 
 
                 </div>
-            </div>
+            </div> -->
 
 
             <?php
@@ -137,7 +143,7 @@ if (!isset($_SESSION['role']))
                 $days = $row['Days'];
                 $alerted = $row['Alerted']
             ?>
-                <!-- <tr>
+                <tr>
         <td><?php echo $id ?></td>
         <td><?php echo $patientname ?></td>
         <td><?php echo $patientemail ?></td>
@@ -145,9 +151,30 @@ if (!isset($_SESSION['role']))
         <td><?php echo $dosage ?></td>
         <td><?php echo $takewhen ?></td>
         <td><?php echo $days ?></td>
+
+        <?php
+                        if($_SESSION['role'] !== 'Doctor'){
+                           ?>
+                            <td>
+                                 <?php
+                            if($alerted == '') {
+                                echo '<button style="padding:8px;border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="alert.php?email='.$patientemail.'&id='.$id.'">Alert</a></button>';
+                            }else {
+                               echo'<p>Alert</p>';
+                            }
+                            ?>
+                            </td>
+                           
+                            
+                        </div>
+                        <?php
+                        }
+                        ?>
+        
     </tr>
-</table> -->
-                <div class="tale-box">
+</table>
+            </div>
+               <!--  <div class="tale-box">
                     <div class="table-row">
                         <div class="table-cell">
                             <p><?php echo $id ?></p>
@@ -198,7 +225,7 @@ if (!isset($_SESSION['role']))
                         
 
                     </div>
-                </div>
+                </div> -->
 
             <?php
             }
