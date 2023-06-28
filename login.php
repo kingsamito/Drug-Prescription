@@ -19,8 +19,8 @@ if(mysqli_num_rows($result)){
 	?>
 	<script>
 		alert("No username found !")
+		window.location.href="signin.php"
 	</script>
 	<?php
-	header("location: signin.php");
 	}
 ?>
