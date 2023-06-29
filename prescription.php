@@ -84,11 +84,6 @@ if (!isset($_SESSION['role']))
                         <th>Taken When</th>
                         <th>Days</th>
                         <th>Action</th>
-                        <?php
-                        if ($_SESSION['role'] !== 'Doctor') {
-                            echo '<th>Action</th>';
-                        }
-                        ?>
                     </tr>
 
 
@@ -116,24 +111,20 @@ if (!isset($_SESSION['role']))
                             <td><?php echo $dosage ?></td>
                             <td><?php echo $takewhen ?></td>
                             <td><?php echo $days ?></td>
-                            <td>
-                            <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:green;"><a href="edit.php?from=prescription&id=<?php echo $id ?>" style="width: auto;color:white">Edit</a></button>
+                            <td style="display: flex;gap:10px">
+                            <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:green;"><a href="editprescription.php?from=prescription&id=<?php echo $id ?>" style="width: auto;color:white">Edit</a></button>
                                 <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:red;"><a href="delete.php?from=prescription&id=<?php echo $id ?>" style="width: auto;color:white">Delete</a></button>
-                            </td>
-
-                            <?php
+                             <?php
                             if ($_SESSION['role'] !== 'Doctor') {
                             ?>
-                                <td>
-                                    <?php
+                              <?php
                                     if ($alerted == '') {
-                                        echo '<button style="padding:8px;border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="alert.php?email=' . $patientemail . '&id=' . $id . '">Alert</a></button>';
+                                        echo '<button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:yellowgreen;"><a style="width: auto;color:white" href="alert.php?email=' . $patientemail . '&id=' . $id . '">Alert</a></button>';
                                     } else {
                                         echo '<p>Alert</p>';
                                     }
-                                    ?>
-                                </td>
-
+                                    ?>    
+                            </td>
 
             </div>
         <?php
