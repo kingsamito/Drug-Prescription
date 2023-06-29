@@ -1,13 +1,14 @@
 <?php
 require("dbconn.php");
-    session_start();
-    if(!isset($_SESSION['role']))
+session_start();
+if (!isset($_SESSION['role']))
     header("Location: ../index.php")
-    ?>
+?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,44 +18,49 @@ require("dbconn.php");
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     <title>Dashboard</title>
 </head>
+
 <body>
     <div class="container">
-        <nav>
+        <div id="menucontainer" style="background: white;height: 100%;position: fixed;padding: 20px;margin-right: 20px;">
+            <i  class="fa fa-bars" onclick="showMenu()"></i>
+        </div>
+        <nav id="nav">
             <ul>
                 <li class="logo"><a href="#" class="dash">
-                    <span class="nav-item">Dashboard</span>
-                </a></li>
+                        <span class="nav-item">Dashboard</span>
+                        <i  style="" class="fa fa-bars" onclick="closeMenu()"></i>
+                    </a></li>
                 <li><a href="#" class="dash">
-                    <i class="fa fa-home"></i>
-                    <span class="nav-item">Home</span>
-                </a></li>
+                        <i class="fa fa-home"></i>
+                        <span class="nav-item">Home</span>
+                    </a></li>
                 <li><a href="patient.php" class="dash">
-                    <i class="fa fa-user-o"></i>
-                    <span class="nav-item">Patient</span>
-                </a></li>
+                        <i class="fa fa-user-o"></i>
+                        <span class="nav-item">Patient</span>
+                    </a></li>
                 <li><a href="prescription.php" class="dash">
-                    <i class="fa fa-paper-plane-o"></i>
-                    <span class="nav-item">Prescription</span>
-                </a></li>
+                        <i class="fa fa-paper-plane-o"></i>
+                        <span class="nav-item">Prescription</span>
+                    </a></li>
                 <li><a href="complaint.php" class="dash">
-                    <i class="fa fa-book"></i>
-                    <span class="nav-item">Complain</span>
-                </a></li>
+                        <i class="fa fa-book"></i>
+                        <span class="nav-item">Complain</span>
+                    </a></li>
                 <li><a href="logout.php" class="logout">
-                    <i class="fa fa-sign-out"></i>
-                    <span class="nav-item">Logout</span>
-                </a></li>
+                        <i class="fa fa-sign-out"></i>
+                        <span class="nav-item">Logout</span>
+                    </a></li>
             </ul>
         </nav>
 
 
-        <section class="main">
+        <section class="main" id="main">
 
-        <?php
-        $pat = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `patient`"));
-        $pre = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `prescription`"));
-        $com = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `complaints`"));
-        ?>
+            <?php
+            $pat = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `patient`"));
+            $pre = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `prescription`"));
+            $com = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `complaints`"));
+            ?>
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
 
@@ -66,15 +72,15 @@ require("dbconn.php");
                     <h3>Patient</h3>
                     <h3 style="width:280px;margin: auto;"><?php echo $pat ?></h3>
                 </div>
-            
 
-            
+
+
                 <div class="card">
                     <i class="fa fa-user-o"></i>
                     <h3>Prescription</h3>
                     <h3 style="width:280px;margin: auto;"><?php echo $pre ?></h3>
                 </div>
-           
+
 
                 <div class="card">
                     <i class="fa fa-user-o"></i>
@@ -83,8 +89,24 @@ require("dbconn.php");
                 </div>
             </div>
 
-        
+
         </section>
     </div>
+
+    <script>
+        function showMenu(){
+            document.getElementById("nav").style.display="block";
+            document.getElementById("nav").style.position="absolute";
+            document.getElementById("nav").style.zIndex="100";
+            document.getElementById("menucontainer").style.display="none";
+            document.getElementById("main").style.marginLeft="-20px";
+        }
+        function closeMenu(){
+            document.getElementById("nav").style.display="none";
+            document.getElementById("menucontainer").style.display="block";
+            document.getElementById("main").style.marginLeft="40px";
+        }
+    </script>
 </body>
+
 </html>

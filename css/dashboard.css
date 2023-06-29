@@ -161,18 +161,25 @@ nav .fa {
 
   }
 
-  .main-skills .card {}
-
-  .main-skills .card button {}
-
-  nav {
-    display: none;
-
-  }
 }
 
-@media screen and (max-width:600px) {
-  .main-skills .card button {}
+@media screen and (max-width:530px) {
+  nav {
+    display: none;
+  }
+  .main {
+    margin-left: 40px;
+  }
+  #menucontainer {
+    display: block;
+  }
+  
+}
+@media screen and (min-width:530px) {
+  
+  .logo i {
+    display: none;
+  }
 }
 
 
