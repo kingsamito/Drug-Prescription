@@ -1,4 +1,5 @@
 <?php
+require("dbconn.php");
     session_start();
     if(!isset($_SESSION['role']))
     header("Location: ../index.php")
@@ -48,17 +49,22 @@
 
 
         <section class="main">
+
+        <?php
+        $pat = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `patient`"));
+        $pre = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `prescription`"));
+        $com = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `complaints`"));
+        ?>
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
-                <i class="fa fa-user"></i>
+
             </div>
 
             <div class="main-skills">
                 <div class="card">
                     <i class="fa fa-user-o"></i>
                     <h3>Patient</h3>
-                    <p>check patient section for records</p>
-                    <button><a href="patient.php">View</a></button>
+                    <h3 style="width:280px;margin: auto;"><?php echo $pat ?></h3>
                 </div>
             
 
@@ -66,16 +72,14 @@
                 <div class="card">
                     <i class="fa fa-user-o"></i>
                     <h3>Prescription</h3>
-                    <p>Administer the right dosage of drug</p>
-                    <button><a href="prescription.php">Prescribe Now</a></button>
+                    <h3 style="width:280px;margin: auto;"><?php echo $pre ?></h3>
                 </div>
            
 
                 <div class="card">
                     <i class="fa fa-user-o"></i>
                     <h3>Complaint</h3>
-                    <p>View Complaints from patients</p>
-                    <button><a href="complaint.php">View</a></button>
+                    <h3 style="width:280px;margin: auto;"><?php echo $com ?></h3>
                 </div>
             </div>
 

@@ -59,7 +59,7 @@ if (!isset($_SESSION['role']))
         <section class="main">
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
-                <i class="fa fa-user"></i>
+                
             </div>
 
             <!-- please i need to put a condition here so only doctor can prescribe -->
@@ -73,164 +73,82 @@ if (!isset($_SESSION['role']))
 
             <!--Table for patient-->
             <div style="overflow-x:auto;">
-            <table>
-    <tr>
-        <th>ID</th>
-        <th>Patient Name</th>
-        <th>Patient Email</th>
-        <th>Drug Name</th>
-        <th>Dosage</th>
-        <th>Taken When</th>
-        <th>Days</th>
-        <?php
-        if($_SESSION['role'] !== 'Doctor') {
-            echo '<th>Action</th>';
-        }
-        ?>
-    </tr>
-    
-
-            <!-- <div class="table-box">
-                <div class="table-row table-head">
-                    <div class="table-cell">
-                        <p>ID</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Patient Name</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Patient Email</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Drug Name</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Dosage</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Taken When</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Days</p>
-                    </div>
-                    <div class="table-cell last-cell">
-                        <p>Action</p>
-                    </div>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Patient Name</th>
+                        <th>Patient Email</th>
+                        <th>Drug Name</th>
+                        <th>Patient Complaint</th>
+                        <th>Dosage</th>
+                        <th>Taken When</th>
+                        <th>Days</th>
+                        <th>Action</th>
+                        <?php
+                        if ($_SESSION['role'] !== 'Doctor') {
+                            echo '<th>Action</th>';
+                        }
+                        ?>
+                    </tr>
 
 
-
-                </div>
-            </div> -->
-
-
-            <?php
-            $query = "SELECT * FROM `prescription`";
-            $result = mysqli_query($con, $query);
-
-            while ($row = mysqli_fetch_assoc($result)) {
-                $id = $row['id'];
-                $patientname = $row['PatientName'];
-                $patientemail = $row['PatientEmail'];
-                $drugname = $row['DrugName'];
-                $dosage = $row['Dosage'];
-                $takewhen = $row['TakeWhen'];
-                $days = $row['Days'];
-                $alerted = $row['Alerted']
-            ?>
-                <tr>
-        <td><?php echo $id ?></td>
-        <td><?php echo $patientname ?></td>
-        <td><?php echo $patientemail ?></td>
-        <td><?php echo $drugname ?></td>
-        <td><?php echo $dosage ?></td>
-        <td><?php echo $takewhen ?></td>
-        <td><?php echo $days ?></td>
-
-        <?php
-                        if($_SESSION['role'] !== 'Doctor'){
-                           ?>
+                    <?php
+                    $query = "SELECT * FROM `prescription`";
+                    $result = mysqli_query($con, $query);
+                    $pre = mysqli_num_rows(mysqli_query($con, "SELECT * FROM `prescription`"));
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['id'];
+                        $patientname = $row['PatientName'];
+                        $patientemail = $row['PatientEmail'];
+                        $drugname = $row['DrugName'];
+                        $patientcomplaint = $row['PatientComplaint'];
+                        $dosage = $row['Dosage'];
+                        $takewhen = $row['TakeWhen'];
+                        $days = $row['Days'];
+                        $alerted = $row['Alerted']
+                    ?>
+                        <tr>
+                            <td><?php echo $id ?></td>
+                            <td><?php echo $patientname ?></td>
+                            <td><?php echo $patientemail ?></td>
+                            <td><?php echo $drugname ?></td>
+                            <td><?php echo $patientcomplaint ?></td>
+                            <td><?php echo $dosage ?></td>
+                            <td><?php echo $takewhen ?></td>
+                            <td><?php echo $days ?></td>
                             <td>
-                                 <?php
-                            if($alerted == '') {
-                                echo '<button style="padding:8px;border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="alert.php?email='.$patientemail.'&id='.$id.'">Alert</a></button>';
-                            }else {
-                               echo'<p>Alert</p>';
-                            }
-                            ?>
+                            <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:green;"><a href="edit.php?from=prescription&id=<?php echo $id ?>" style="width: auto;color:white">Edit</a></button>
+                                <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:red;"><a href="delete.php?from=prescription&id=<?php echo $id ?>" style="width: auto;color:white">Delete</a></button>
                             </td>
-                           
-                            
-                        </div>
-                        <?php
-                        }
-                        ?>
-        
-    </tr>
-</table>
-            </div>
-               <!--  <div class="tale-box">
-                    <div class="table-row">
-                        <div class="table-cell">
-                            <p><?php echo $id ?></p>
-                        </div>
 
-                        <div class="table-cell">
-                            <p><?php echo $patientname ?></p>
-                        </div>
-
-                        <div class="table-cell">
-                            <p><?php echo $patientemail ?></p>
-                        </div>
-                        <div class="table-cell">
-                            <p><?php echo $drugname ?></p>
-                        </div>
-                        <div class="table-cell">
-                            <p><?php echo $dosage ?></p>
-                        </div>
-                        <div class="table-cell">
-                            <p><?php echo $takewhen ?></p>
-                        </div>
-
-                        <?php
-                        if($_SESSION['role'] === 'Doctor'){
-                            ?>
-                            <div class="table-cell last-cell">
-                            <p><?php echo $days ?></p>
-                            </div>
-                        <?php
-                        }else {
-                            ?>
-                            <div class="table-cell">
-                            <p><?php echo $days ?></p>
-                        </div>
-                        <div class="table-cell last-cell">
                             <?php
-                            if($alerted == '') {
-                                echo '<button style="border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="alert.php?email='.$patientemail.'&id='.$id.'">Alert</a></button>';
-                            }else {
-                               echo'<p>Alert</p>';
-                            }
+                            if ($_SESSION['role'] !== 'Doctor') {
                             ?>
-                            
-                        </div>
-                        <?php
-                        }
-                        ?>
-                        
+                                <td>
+                                    <?php
+                                    if ($alerted == '') {
+                                        echo '<button style="padding:8px;border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="alert.php?email=' . $patientemail . '&id=' . $id . '">Alert</a></button>';
+                                    } else {
+                                        echo '<p>Alert</p>';
+                                    }
+                                    ?>
+                                </td>
 
-                    </div>
-                </div> -->
 
-            <?php
-            }
-            ?>
-        </section>
+            </div>
+        <?php
+                            }
+        ?>
+
+        </tr>
+    <?php
+                    }
+    ?>
+    </table>
+    </div>
+
+
+    </section>
     </div>
 
 

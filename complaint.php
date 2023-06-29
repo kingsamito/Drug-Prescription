@@ -54,7 +54,7 @@ if (!isset($_SESSION['role'])) {
         <section class="main">
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
-                <i class="fa fa-user"></i>
+                
             </div>
 
             <!--Table for patient-->
@@ -83,16 +83,15 @@ if (!isset($_SESSION['role'])) {
                             <td><?php echo $id ?></td>
                             <td><?php echo $name ?></td>
                             <td><?php echo $email ?></td>
-                            <td> <button class="dash-btn" style="width: auto;"><a href="./chatbox/index.php?patient=<?php echo $email; ?>">View</a></button>
+                            <td> <button style="padding:8px;border:1px solid gray; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);"><a style="width:auto" href="./chatbox/index.php?patient=<?php echo $email; ?>">View</a></button>
                             </td>
 
                         </tr>
-                </table>
-            </div>
-
-        <?php
+                        <?php
                     }
         ?>
+                </table>
+            </div>
 
 
         </section>

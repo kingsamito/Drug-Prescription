@@ -43,7 +43,7 @@ if (!isset($_SESSION['email'])) {
                         <i class="fa fa-book"></i>
                         <span class="nav-item">Complain</span>
                     </a></li>
-                    <li><a href="logout.php" class="logout">
+                <li><a href="logout.php" class="logout">
                         <i class="fa fa-sign-out"></i>
                         <span class="nav-item">Logout</span>
                     </a></li>
@@ -54,58 +54,55 @@ if (!isset($_SESSION['email'])) {
         <section class="main">
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['user']; ?></h1>
-                <i class="fa fa-user"></i>
+                
             </div>
 
-            <!--Table for patient-->
-
-            <div class="tale-box">
-                <div class="table-row table-head">
-                    <div class="table-cell">
-                        <p>ID</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Patient Name</p>
-                    </div>
-
-                    <div class="table-cell">
-                        <p>Email</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!--firstcoloumn--><!--firstcoloumn--><!--firstcoloumn-->
-
             <?php
-            $query = "SELECT * FROM `patient`";
-            $result = mysqli_query($con, $query);
-
-            while ($row = mysqli_fetch_assoc($result)) {
-                $id = $row['id'];
-                $name = $row['Name'];
-                $email = $row['Email'];
-            ?>
-                <div class="tale-box">
-                    <div class="table-row">
-                        <div class="table-cell">
-                            <p><?php echo $id; ?></p>
-                        </div>
-
-                        <div class="table-cell">
-                            <p><?php echo $name; ?></p>
-                        </div>
-
-                        <div class="table-cell">
-                            <p><?php echo $email; ?></p>
-                        </div>
-                    </div>
-                </div>
-            <?php
+            if ($_SESSION['role'] === "Doctor") {
+                echo '<div class="prescribe" style="padding-left:0;text-align:left">
+                <button onclick="openPopup()"><a style="width:auto" href="add.php">New Patient</a></button>
+            </div>';
             }
             ?>
-            
+            <!--Table for patient-->
+
+            <div style="overflow-x:auto;">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Patient Name</th>
+                        <th>Patient Email</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                    <!--firstcoloumn--><!--firstcoloumn--><!--firstcoloumn-->
+
+                    <?php
+                    $query = "SELECT * FROM `patient`";
+                    $result = mysqli_query($con, $query);
+                    if (mysqli_num_rows($result) == 0) {
+                        echo "<tr><td>No Patient Records Found</td></tr>";
+                    }
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['id'];
+                        $name = $row['Name'];
+                        $email = $row['Email'];
+                    ?>
+                        <tr>
+                            <td><?php echo $id ?></td>
+                            <td><?php echo $name ?></td>
+                            <td><?php echo $email ?></td>
+                            <td>
+                                <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:yellowgreen;color:white"><a style="width: auto;color:white">View</a></button>
+                                <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:green;"><a href="edit.php?from=patient&id=<?php echo $id ?>" style="width: auto;color:white">Edit</a></button>
+                                <button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:red;"><a href="delete.php?from=patient&id=<?php echo $id ?>" style="width: auto;color:white">Delete</a></button>
+                            </td>
+
+                        <?php
+                    }
+                        ?>
+
         </section>
     </div>
 </body>

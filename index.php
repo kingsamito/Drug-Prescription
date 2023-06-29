@@ -27,8 +27,7 @@
         <div class="text-box">
             <h1>DRUG PRESCRIPTION SYSTEM</h1>
             <p>Health is the greatest possession. Contentment is the greatest treasure. Confidence is the greatest friend.</p>
-            <a href="" class="hero-btn">Health is Wealth</a>
-        </div>
+         </div>
 
 
         <div class="chatbox">

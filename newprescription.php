@@ -1,4 +1,5 @@
 <?php
+require("dbconn.php");
 session_start();
 if (!isset($_SESSION['role']))
     header("Location: ../index.php")
@@ -53,7 +54,7 @@ if (!isset($_SESSION['role']))
         <section class="main">
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
-                <i class="fa fa-user"></i>
+                
             </div>
 
             <!--<div class="main-skills">
@@ -82,12 +83,34 @@ if (!isset($_SESSION['role']))
                                 <div class="underline"></div>
                                 <label for="">Patient Email</label>
                             </div>
+                            <div class="input-data">
+                                <input type="text" name="patientcomplaint" required>
+                                <div class="underline"></div>
+                                <label for="">Patient Complaint</label>
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="input-data">
-                                <input type="text" name="drugname" required>
+                                <input type="text" name="drugname" id="drugname" onkeyup="myFunction()" required>
                                 <div class="underline"></div>
                                 <label for="">Drug Name</label>
+                                <table id="myTable" style="display: none;z-index:100;position: relative;background: white;">
+                                <?php
+                                $query = "SELECT * FROM `drug`";
+                                $result = mysqli_query($con, $query);
+                    
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $id = $row['id'];
+                                    $name = $row['name'];
+                                ?>
+                                
+                                <tr>
+                                    <td onclick="go(this)"><?php echo $name ?></td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                                </table>
                             </div>
                             <div class="input-data">
                                 <select name="dosage" id="" required>
@@ -138,6 +161,41 @@ if (!isset($_SESSION['role']))
 
         </section>
     </div>
+
+    <input type="text" id="myInput"  placeholder="Search for names.." title="Type in a name">
+
+
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("drugname");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        table.style.display = "block"
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function go(e) {
+var val;
+
+
+    document.getElementById("drugname").value=e.innerHTML
+    document.getElementById("myTable").style.display="none"
+}
+</script>
+
 </body>
 
 </html>

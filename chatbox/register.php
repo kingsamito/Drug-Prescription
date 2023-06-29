@@ -7,7 +7,8 @@ if (isset($_POST['submit'])) {
 	$username = $_POST['user'];
 	$email = $_POST['email'];
 	$who = $_POST['who'];
-	$msg = "Hello " . $who;
+	$complaint = $_POST['complaint'];
+	$msg = "Hello " . $who.'<br>'.$complaint;
 
 	if ($email !== 'doc@gmail.com') {
 		$_SESSION['user'] = $username;
@@ -15,6 +16,6 @@ if (isset($_POST['submit'])) {
 		$_SESSION['who'] = $who;
 	}
 
-	mysqli_query($con, "INSERT INTO logs(username, email, to_whom, msg) VALUES('$username','$email','$who', '')");
+	mysqli_query($con, "INSERT INTO logs(username, email, to_whom, msg) VALUES('$username','$email','$who', '$msg')");
 	header("location: index.php?username=$username");
 }

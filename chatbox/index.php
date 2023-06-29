@@ -1,3 +1,7 @@
+<?php
+            session_start();
+        ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,29 +21,29 @@
     </div>
 
     <?php
-            session_start();
                 if(!isset($_SESSION['email'])){
         ?>
     <form method="post" action="register.php">
       <label>Name</label>
-      <input name="customerName" required="" type="text" />
+      <input name="user" required="" type="text" />
       <label>Email</label>
-      <input name="customerEmail" required="" type="email" />
+      <input name="email" required="" type="email" />
       <label for="customerPhone">To</label>
       <div class="input-field">
         <i class="fa fa-user-md"></i>
-        <select name="" id="" required>
+        <select name="who" id="" required>
           <option value="#">Select</option>
           <option value="doctor">Doctor</option>
           <option value="pharmacy">Pharmacy</option>
         </select>
       </div>
-
+      <label>Complaint</label>
+      <textarea name="complaint" required></textarea>
 
       <h3>
         Please provide all the information about your issue you can.
       </h3>
-      <button id="customerOrder">SUBMIT</button>
+      <button id="customerOrder" name="submit">SUBMIT</button>
       
     </form>
     <?php

@@ -17,12 +17,13 @@ if (isset($_POST['submit'])) {
 	$patientname = $_POST['patientname'];
 	$patientemail = $_POST['patientemail'];
 	$drugname = $_POST['drugname'];
+	$patientcomplaint = $_POST['patientcomplaint'];
 	$dosage = $_POST['dosage'];
 	$takewhen = $_POST['takewhen'];
 	$days = $_POST['days'];
 	
 
-	mysqli_query($con, "INSERT INTO `prescription`(`PatientName`, `PatientEmail`, `DrugName`, `Dosage`, `TakeWhen`, `Days`) VALUES ('$patientname','$patientemail','$drugname','$dosage','$takewhen','$days')");
+	mysqli_query($con, "INSERT INTO `prescription`(`PatientName`, `PatientEmail`, `DrugName`, `PatientComplaint`, `Dosage`, `TakeWhen`, `Days`) VALUES ('$patientname','$patientemail','$drugname','$patientcomplaint','$dosage','$takewhen','$days')");
 
     $mail = new PHPMailer(true);
 
