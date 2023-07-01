@@ -241,3 +241,23 @@ table {
 .popup{
     border: 1px solid black;
 }
+
+
+@media screen and (max-width:530px) {
+    nav {
+      display: none;
+    }
+    .main {
+      margin-left: 40px;
+    }
+    #menucontainer {
+      display: block;
+    }
+    
+  }
+  @media screen and (min-width:530px) {
+    
+    .logo i {
+      display: none;
+    }
+  }

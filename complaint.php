@@ -22,24 +22,28 @@ if (!isset($_SESSION['role'])) {
 
 <body>
     <div class="container">
-        <nav>
+        <div id="menucontainer" style="background: white;height: 100%;position: fixed;padding: 20px;margin-right: 20px;">
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </div>
+        <nav id="nav">
             <ul>
-                <li class="logo"><a href="#">
+                <li class="logo"><a href="#" class="dash">
                         <span class="nav-item">Dashboard</span>
+                        <i style="" class="fa fa-bars" onclick="closeMenu()"></i>
                     </a></li>
-                <li><a href="dashboard.php">
+                <li><a href="#" class="dash">
                         <i class="fa fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>
-                <li><a href="patient.php">
+                <li><a href="patient.php" class="dash">
                         <i class="fa fa-user-o"></i>
                         <span class="nav-item">Patient</span>
                     </a></li>
-                <li><a href="prescription.php">
+                <li><a href="prescription.php" class="dash">
                         <i class="fa fa-paper-plane-o"></i>
                         <span class="nav-item">Prescription</span>
                     </a></li>
-                <li><a href="complaint.php">
+                <li><a href="complaint.php" class="dash">
                         <i class="fa fa-book"></i>
                         <span class="nav-item">Complain</span>
                     </a></li>
@@ -51,10 +55,10 @@ if (!isset($_SESSION['role'])) {
         </nav>
 
 
-        <section class="main">
+        <section class="main" id="main">
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
-                
+
             </div>
 
             <!--Table for patient-->
@@ -66,7 +70,7 @@ if (!isset($_SESSION['role'])) {
                         <th>Patient Email</th>
                         <th>Action</th>
                     </tr>
-                
+
                     <?php
                     $me = $_SESSION['role'];
                     $email = $_SESSION['email'];
@@ -87,15 +91,30 @@ if (!isset($_SESSION['role'])) {
                             </td>
 
                         </tr>
-                        <?php
+                    <?php
                     }
-        ?>
+                    ?>
                 </table>
             </div>
 
 
         </section>
     </div>
+
+    <script>
+        function showMenu(){
+            document.getElementById("nav").style.display="block";
+            document.getElementById("nav").style.position="absolute";
+            document.getElementById("nav").style.zIndex="100";
+            document.getElementById("menucontainer").style.display="none";
+            document.getElementById("main").style.marginLeft="-20px";
+        }
+        function closeMenu(){
+            document.getElementById("nav").style.display="none";
+            document.getElementById("menucontainer").style.display="block";
+            document.getElementById("main").style.marginLeft="40px";
+        }
+    </script>
 </body>
 
 </html>
