@@ -43,6 +43,23 @@ if (!isset($_SESSION['role']))
                         <i class="fa fa-book"></i>
                         <span class="nav-item">Complain</span>
                     </a></li>
+                <li>
+                    <?php
+                    if ($_SESSION['email'] == "doc@gmail.com") {
+                        $contact = "phar@gmail.com";
+                        $text = "Pharmacy";
+                    } elseif ($_SESSION['email'] == "phar@gmail.com") {
+                        $contact = "doc@gmail.com";
+                        $text = "Doctor";
+                    } else {
+                        $contact = "";
+                    }
+                    ?>
+                    <a href="chatbox/index.php?contact=<?php echo $contact ?>" class="dash">
+                        <i class="fa fa-comments"></i>
+                        <span class="nav-item">Contact the <?php echo $text ?> </span>
+                    </a>
+                </li>
                 <li><a href="logout.php" class="logout">
                         <i class="fa fa-sign-out"></i>
                         <span class="nav-item">Logout</span>
@@ -54,7 +71,7 @@ if (!isset($_SESSION['role']))
         <section class="main">
             <div class="main-top">
                 <h1>Hi, <?php echo $_SESSION['name']; ?></h1>
-                
+
             </div>
 
             <!--<div class="main-skills">
@@ -95,21 +112,21 @@ if (!isset($_SESSION['role']))
                                 <div class="underline"></div>
                                 <label for="">Drug Name</label>
                                 <table id="myTable" style="display: none;z-index:100;position: relative;background: white;">
-                                <?php
-                                $query = "SELECT * FROM `drug`";
-                                $result = mysqli_query($con, $query);
-                    
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $id = $row['id'];
-                                    $name = $row['name'];
-                                ?>
-                                
-                                <tr>
-                                    <td onclick="go(this)"><?php echo $name ?></td>
-                                </tr>
-                                <?php
-                                }
-                                ?>
+                                    <?php
+                                    $query = "SELECT * FROM `drug`";
+                                    $result = mysqli_query($con, $query);
+
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $id = $row['id'];
+                                        $name = $row['name'];
+                                    ?>
+
+                                        <tr>
+                                            <td onclick="go(this)"><?php echo $name ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
                                 </table>
                             </div>
                             <div class="input-data">
@@ -162,39 +179,39 @@ if (!isset($_SESSION['role']))
         </section>
     </div>
 
-    <input type="text" id="myInput"  placeholder="Search for names.." title="Type in a name">
+    <input type="text" id="myInput" placeholder="Search for names.." title="Type in a name">
 
 
 
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("drugname");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        table.style.display = "block"
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("drugname");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        table.style.display = "block"
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
 
-function go(e) {
-var val;
+        function go(e) {
+            var val;
 
 
-    document.getElementById("drugname").value=e.innerHTML
-    document.getElementById("myTable").style.display="none"
-}
-</script>
+            document.getElementById("drugname").value = e.innerHTML
+            document.getElementById("myTable").style.display = "none"
+        }
+    </script>
 
 </body>
 

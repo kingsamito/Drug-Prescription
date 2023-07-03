@@ -47,6 +47,23 @@ if (!isset($_SESSION['role'])) {
                         <i class="fa fa-book"></i>
                         <span class="nav-item">Complain</span>
                     </a></li>
+                <li>
+                    <?php
+                    if ($_SESSION['email'] == "doc@gmail.com") {
+                        $contact = "phar@gmail.com";
+                        $text = "Pharmacy";
+                    } elseif ($_SESSION['email'] == "phar@gmail.com") {
+                        $contact = "doc@gmail.com";
+                        $text = "Doctor";
+                    } else {
+                        $contact = "";
+                    }
+                    ?>
+                    <a href="chatbox/index.php?contact=<?php echo $contact ?>" class="dash">
+                        <i class="fa fa-comments"></i>
+                        <span class="nav-item">Contact the <?php echo $text ?> </span>
+                    </a>
+                </li>
                 <li><a href="logout.php" class="logout">
                         <i class="fa fa-sign-out"></i>
                         <span class="nav-item">Logout</span>
@@ -102,17 +119,18 @@ if (!isset($_SESSION['role'])) {
     </div>
 
     <script>
-        function showMenu(){
-            document.getElementById("nav").style.display="block";
-            document.getElementById("nav").style.position="absolute";
-            document.getElementById("nav").style.zIndex="100";
-            document.getElementById("menucontainer").style.display="none";
-            document.getElementById("main").style.marginLeft="-20px";
+        function showMenu() {
+            document.getElementById("nav").style.display = "block";
+            document.getElementById("nav").style.position = "absolute";
+            document.getElementById("nav").style.zIndex = "100";
+            document.getElementById("menucontainer").style.display = "none";
+            document.getElementById("main").style.marginLeft = "-20px";
         }
-        function closeMenu(){
-            document.getElementById("nav").style.display="none";
-            document.getElementById("menucontainer").style.display="block";
-            document.getElementById("main").style.marginLeft="40px";
+
+        function closeMenu() {
+            document.getElementById("nav").style.display = "none";
+            document.getElementById("menucontainer").style.display = "block";
+            document.getElementById("main").style.marginLeft = "40px";
         }
     </script>
 </body>
