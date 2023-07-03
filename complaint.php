@@ -31,7 +31,7 @@ if (!isset($_SESSION['role'])) {
                         <span class="nav-item">Dashboard</span>
                         <i style="" class="fa fa-bars" onclick="closeMenu()"></i>
                     </a></li>
-                <li><a href="#" class="dash">
+                <li><a href="dashboard.php" class="dash">
                         <i class="fa fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>

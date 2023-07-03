@@ -36,7 +36,7 @@ if (!isset($_SESSION['role']))
                         <span class="nav-item">Dashboard</span>
                         <i style="" class="fa fa-bars" onclick="closeMenu()"></i>
                     </a></li>
-                <li><a href="#" class="dash">
+                <li><a href="dashboard.php" class="dash">
                         <i class="fa fa-home"></i>
                         <span class="nav-item">Home</span>
                     </a></li>
@@ -125,7 +125,7 @@ if (!isset($_SESSION['role']))
                                     if ($alerted == '') {
                                         echo '<button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:yellowgreen;"><a style="width: auto;color:white" href="alert.php?email=' . $patientemail . '&id=' . $id . '">Alert</a></button>';
                                     } else {
-                                        echo '<p>Alert</p>';
+                                        echo '<button style="padding:8px;border:none; border-radius:7px; box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);background-color:#ccc;">Alerted</button>';
                                     }
                                     ?>
                             </td>

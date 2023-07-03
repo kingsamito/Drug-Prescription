@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 	$days = $_POST['days'];
 	
 
-	mysqli_query($con, "INSERT INTO `prescription`(`PatientName`, `PatientEmail`, `DrugName`, `PatientComplaint`, `Dosage`, `TakeWhen`, `Days`) VALUES ('$patientname','$patientemail','$drugname','$patientcomplaint','$dosage','$takewhen','$days')");
+	mysqli_query($con, "INSERT INTO `prescription`(`PatientName`, `PatientEmail`, `DrugName`, `PatientComplaint`, `Dosage`, `TakeWhen`, `Days`, `Alerted`) VALUES ('$patientname','$patientemail','$drugname','$patientcomplaint','$dosage','$takewhen','$days', '')");
 
     $mail = new PHPMailer(true);
 
@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
 	$days = $_POST['days'];
 	
 
-	mysqli_query($con, "UPDATE `prescription` SET `PatientName`='$patientname',`PatientEmail`='$patientemail',`DrugName`='$drugname',`PatientComplaint`='$patientcomplaint',`Dosage`='$dosage',`TakeWhen`='$takewhen',`Days`='$days' WHERE `id` = '$id'");
+	mysqli_query($con, "UPDATE `prescription` SET `PatientName`='$patientname',`PatientEmail`='$patientemail',`DrugName`='$drugname',`PatientComplaint`='$patientcomplaint',`Dosage`='$dosage',`TakeWhen`='$takewhen',`Days`, `Alerted`='$days', '' WHERE `id` = '$id'");
 
     $mail = new PHPMailer(true);
 

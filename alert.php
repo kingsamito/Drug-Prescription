@@ -17,6 +17,12 @@ if ($_GET['id'] && $_GET['email']) {
 	$id = $_GET['id'];
 	$patientemail = $_GET['email'];
 
+    $sql = "SELECT `PatientName` from prescription where `id`='$id'";
+    $result = mysqli_query($con, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $patientname = $row['PatientName'];
+
 	mysqli_query($con, "UPDATE `prescription` SET `Alerted`='Yes' WHERE `id`='$id'");
 
     $mail = new PHPMailer(true);
