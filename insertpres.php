@@ -74,7 +74,9 @@ if (isset($_POST['submit'])) {
 	$days = $_POST['days'];
 	
 
-	mysqli_query($con, "UPDATE `prescription` SET `PatientName`='$patientname',`PatientEmail`='$patientemail',`DrugName`='$drugname',`PatientComplaint`='$patientcomplaint',`Dosage`='$dosage',`TakeWhen`='$takewhen',`Days`, `Alerted`='$days', '' WHERE `id` = '$id'");
+	mysqli_query($con, "UPDATE `prescription` SET `PatientName`='$patientname',`PatientEmail`='$patientemail',`DrugName`='$drugname',`PatientComplaint`='$patientcomplaint',`Dosage`='$dosage',`TakeWhen`='$takewhen',`Days`='$days', `Alerted`='Yes' WHERE `id` = $id");
+
+    
 
     $mail = new PHPMailer(true);
 
